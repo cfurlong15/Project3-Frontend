@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react"
+import API_KEY from './.env'
 
 function WeatherForm() {
 
     const [ weather, setWeather ] = useState(null)
     const [ location, setLocation ] = useState(null)
+    const apiKey = process.env.API_KEY
 
 
     async function handleRequest() {
         try {
-            const response = await fetch `api.openweathermap.org/data/2.5/weather?q=${location}&APPID=7295abf0523266eaa2935cc3a9aa0da1`
+            const response = await fetch `api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${API_KEY}`
             const weatherData = await response.json()
             setLocation(weatherData)
             setWeather(weatherData)
