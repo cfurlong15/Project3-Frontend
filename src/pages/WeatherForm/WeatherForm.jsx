@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AddCityForm from "../AddCityForm/AddCityForm";
 //import { useParams } from "react-router"
 //import axios from 'axios'
 
@@ -56,6 +57,9 @@ function WeatherForm() {
           <h2>{Math.round(weather?.main?.temp)}&#x2109;</h2>
           <p>Low: {Math.round(weather?.main?.temp_min)}&#x2109;</p>
           <p>High: {Math.round(weather?.main?.temp_max)}&#x2109;</p>
+        </div>
+        <div>
+            <AddCityForm />
         </div>
       </div>
     );
