@@ -7,6 +7,7 @@ function WeatherForm() {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
   const [searched, setSearched] = useState(false);
+  const [cities, setCities] = useState([])
   const apiKey = import.meta.env.VITE_API_KEY;
   //const {city} = useParams()
 
@@ -28,6 +29,12 @@ function WeatherForm() {
     handleRequest();
   }, []);
 
+  function addCity(newCity) {
+    setCities([...cities, newCity])
+    console.log(newCity)
+}
+
+
   const handleChange = (evt) => {
     setCity(evt.target.value);
   };
@@ -38,6 +45,12 @@ function WeatherForm() {
     setSearched(true);
   };
   console.log(weather);
+
+  const handleAddCity = () => {
+    if (weather && !cities.includes(weather.name)) {
+        addCity(weather.name)
+    }
+  }
 
   if (searched) {
     return (
@@ -51,7 +64,7 @@ function WeatherForm() {
           />
           <button type="submit">Search</button>
         </form>
-
+        
         <div>
           <h2>{weather.name}</h2>
           <h2>{Math.round(weather?.main?.temp)}&#x2109;</h2>
@@ -59,7 +72,14 @@ function WeatherForm() {
           <p>High: {Math.round(weather?.main?.temp_max)}&#x2109;</p>
         </div>
         <div>
-            <AddCityForm />
+            <button onClick={handleAddCity}>Add City</button>
+        <ul>
+                {cities.map((city, index) => (
+                    <li key={index}>{city}</li>
+                ))}
+            </ul>
+            
+            {/* <AddCityForm /> */}
         </div>
       </div>
     );

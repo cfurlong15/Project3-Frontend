@@ -2,11 +2,11 @@ import { useState } from "react"
 
 function AddCityForm() {
 
-    const [cities, setCities] = useState([])
+    //const [cities, setCities] = useState([])
 
-    function addCity(newCity) {
-        setCities([...cities, newCity])
-    }
+    // function addCity(newCity) {
+    //     setCities([...cities, newCity])
+    // }
 
 
 
@@ -18,7 +18,7 @@ function AddCityForm() {
                     <li key={index}>{city}</li>
                 ))}
             </ul>
-            <form onSubmit={(evt) => {
+            {/* <form onSubmit={(evt) => {
                 evt.preventDefault()
                 const newCity = evt.target.elements.city.value
                 addCity(newCity)
@@ -26,7 +26,7 @@ function AddCityForm() {
             }}>
                 <input type="text" name="city" placeholder="Enter city"></input>
                 <button type="submit">Add City</button>
-            </form>
+            </form> */}
         </div>
     )
 }
