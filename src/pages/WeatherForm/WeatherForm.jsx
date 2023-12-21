@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AddCityForm from "../AddCityForm/AddCityForm";
 import CityList from "../CityList/CityList";
-//import { useParams } from "react-router"
-//import axios from 'axios'
 
 function WeatherForm() {
   const [weather, setWeather] = useState(null);
@@ -17,7 +15,6 @@ function WeatherForm() {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=${apiKey}`
       );
       const weatherData = await response.json();
-      //setCity(weatherData)
       setWeather(weatherData);
       console.log(weatherData);
       setSearched(true);
@@ -25,15 +22,6 @@ function WeatherForm() {
       console.log(err);
     }
   }
-
-//   useEffect(() => {
-//     handleRequest();
-//   }, []);
-
-//   function addCity(newCity) {
-//     setCities([...cities, newCity])
-//     console.log(newCity)
-// }
 
 useEffect(() => {
     const cities = JSON.parse(localStorage.getItem("city"));
@@ -55,12 +43,6 @@ useEffect(() => {
   };
   console.log(weather);
 
-//   const handleAddCity = () => {
-//     if (weather && !cities.includes(weather.name)) {
-//         addCity(weather.name)
-//     }
-//   }
-
   if (searched) {
     return (
       <div>
@@ -77,18 +59,12 @@ useEffect(() => {
         <div>
           <h2>{weather.name}</h2>
           <h2>{Math.round(weather?.main?.temp)}&#x2109;</h2>
+          <h3>{weather?.weather?.description}</h3>
           <p>Low: {Math.round(weather?.main?.temp_min)}&#x2109;</p>
           <p>High: {Math.round(weather?.main?.temp_max)}&#x2109;</p>
+          <p>Wind Speed: {weather?.wind?.speed} MPH</p>
         </div>
         <div>
-            {/* <button onClick={handleAddCity}>Save City</button>
-        <ul>
-                {cities.map((city, index) => (
-                    <li key={index}>{city}</li>
-                ))}
-            </ul> */}
-            {/* <CityList /> */}
-            
             <AddCityForm weather={weather} cities={cities}/>
             <CityList cities={cities}/>
         </div>
@@ -113,13 +89,5 @@ useEffect(() => {
     );
   }
 }
-
-// const parseCity = (data) => {
-//     const {lat, long} = cata[coord]
-//     const {country = data["sys"]}
-//     const output = {}
-//     output[]
-//     return output
-// }
 
 export default WeatherForm;
