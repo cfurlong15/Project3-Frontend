@@ -1,0 +1,29 @@
+import React, { useEffect, useRef } from "react";
+import "./Background.css";
+import Vimeo from "@vimeo/player";
+
+function Background() {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      id: 896971507,
+      autoplay: true,
+      loop: true,
+      muted: true,
+      background: true,
+    };
+
+    if (videoRef.current) {
+      const player = new Vimeo(videoRef.current, options);
+    }
+  }, []);
+
+  return (
+    <div className="video-background-container">
+        <div ref={videoRef} className="video-container"></div>
+    </div>
+  );
+}
+
+export default Background;

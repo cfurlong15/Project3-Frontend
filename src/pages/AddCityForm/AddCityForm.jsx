@@ -16,7 +16,7 @@ console.log(weather)
         return(
             <div>
                 <form onSubmit={handleSubmit}>
-            <button type="submit">Add City</button>
+            <button className="bg-black p-1 m-2" type="submit">Add City to Your List</button>
             </form>
             </div>
         )
