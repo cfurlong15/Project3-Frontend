@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AddCityForm from "../AddCityForm/AddCityForm";
+import CityList from "../CityList/CityList";
 //import { useParams } from "react-router"
 //import axios from 'axios'
 
@@ -9,7 +10,6 @@ function WeatherForm() {
   const [searched, setSearched] = useState(false);
   const [cities, setCities] = useState([])
   const apiKey = import.meta.env.VITE_API_KEY;
-  //const {city} = useParams()
 
   async function handleRequest() {
     try {
@@ -20,19 +20,28 @@ function WeatherForm() {
       //setCity(weatherData)
       setWeather(weatherData);
       console.log(weatherData);
+      setSearched(true);
     } catch (err) {
       console.log(err);
     }
   }
 
-  useEffect(() => {
-    handleRequest();
-  }, []);
+//   useEffect(() => {
+//     handleRequest();
+//   }, []);
 
-  function addCity(newCity) {
-    setCities([...cities, newCity])
-    console.log(newCity)
-}
+//   function addCity(newCity) {
+//     setCities([...cities, newCity])
+//     console.log(newCity)
+// }
+
+useEffect(() => {
+    const cities = JSON.parse(localStorage.getItem("city"));
+    console.log(cities)
+    if (cities) {
+      setCities(cities);
+    }
+  }, []);
 
 
   const handleChange = (evt) => {
@@ -42,15 +51,15 @@ function WeatherForm() {
   const handleSearch = (evt) => {
     evt.preventDefault();
     handleRequest();
-    setSearched(true);
+    
   };
   console.log(weather);
 
-  const handleAddCity = () => {
-    if (weather && !cities.includes(weather.name)) {
-        addCity(weather.name)
-    }
-  }
+//   const handleAddCity = () => {
+//     if (weather && !cities.includes(weather.name)) {
+//         addCity(weather.name)
+//     }
+//   }
 
   if (searched) {
     return (
@@ -72,14 +81,16 @@ function WeatherForm() {
           <p>High: {Math.round(weather?.main?.temp_max)}&#x2109;</p>
         </div>
         <div>
-            <button onClick={handleAddCity}>Add City</button>
+            {/* <button onClick={handleAddCity}>Save City</button>
         <ul>
                 {cities.map((city, index) => (
                     <li key={index}>{city}</li>
                 ))}
-            </ul>
+            </ul> */}
+            {/* <CityList /> */}
             
-            {/* <AddCityForm /> */}
+            <AddCityForm weather={weather} cities={cities}/>
+            <CityList cities={cities}/>
         </div>
       </div>
     );
@@ -97,9 +108,18 @@ function WeatherForm() {
         </form>
 
         <p>Search for your city!</p>
+        <CityList cities={cities} />
       </div>
     );
   }
 }
+
+// const parseCity = (data) => {
+//     const {lat, long} = cata[coord]
+//     const {country = data["sys"]}
+//     const output = {}
+//     output[]
+//     return output
+// }
 
 export default WeatherForm;
