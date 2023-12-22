@@ -20,6 +20,7 @@ Upon searching for a city (ex: Boston, Massachusetts), the user will be able to 
 - Tailwind CSS
 - VITE
 - Node.JS
+- Vimeo - @vimeo/player
 
 ## Getting Started 
 
