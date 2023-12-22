@@ -8,7 +8,7 @@ Utilizing Open Weather's API, WeatherWise allows you to find cities worldwide an
 
 Users will be greeted with a Home Page introducing them to the app. From there, you can access the weather page, where you can search for locations, and/or view the cities you have already saved. 
 
-Upon searching for a city, the user will be able to see the current weather data and have the option to save that city to their own personal list.
+Upon searching for a city (ex: Boston, Massachusetts), the user will be able to see the current weather data and have the option to save that city to their own personal list.
 
 ![](./src/assets/Home-page.png)
 
