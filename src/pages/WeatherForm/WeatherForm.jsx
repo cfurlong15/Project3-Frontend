@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AddCityForm from "../AddCityForm/AddCityForm";
 import CityList from "../CityList/CityList";
+import Header from "../../components/Header/Header";
 
 function WeatherForm() {
   const [weather, setWeather] = useState(null);
@@ -8,6 +9,7 @@ function WeatherForm() {
   const [searched, setSearched] = useState(false);
   const [cities, setCities] = useState([])
   const apiKey = import.meta.env.VITE_API_KEY;
+
 
   async function handleRequest() {
     try {
@@ -39,7 +41,6 @@ useEffect(() => {
   const handleSearch = (evt) => {
     evt.preventDefault();
     handleRequest();
-    
   };
   console.log(weather);
   let upperCaseDescription = weather?.weather[0]?.description
@@ -49,22 +50,22 @@ useEffect(() => {
       <div className="bg-blue-500 p-6 rounded-2xl opacity-75">
         <form onSubmit={handleSearch}>
           <input
+          className="rounded-xl h-8 w-80 text-center bg-blue-800 hover:bg-violet-600"
             type="text"
             value={city}
             onChange={handleChange}
             placeholder="Enter City"
           />
-          <button className="bg-black p-1 m-2" type="submit">Search</button>
+          <button className="bg-blue-800 hover:bg-violet-600 p-1 m-2 w-36" type="submit">Search</button>
         </form>
         
-        <div className="grid-cols-2">
-          <h2 className="text-2xl">{weather.name}</h2>
-          <h2>{Math.round(weather?.main?.temp)}&#x2109;</h2>
-          <h3>{upperCaseDescription.charAt(0).toUpperCase() + upperCaseDescription.slice(1)}</h3>
-          <p className="inline-block pr-4">Low: {Math.round(weather?.main?.temp_min)}&#x2109;</p>
-          <p className="inline-block">High: {Math.round(weather?.main?.temp_max)}&#x2109;</p>
-          <p>Wind Speed: {Math.round(weather?.wind?.speed)} MPH</p>
-          
+        <div className="">
+          <h2 className="text-4xl mb-4">{weather.name}</h2>
+          <h2 className="text-3xl">{Math.round(weather?.main?.temp)}&#x2109;</h2>
+          <p className="inline-block pr-4 text-2xl">Low: {Math.round(weather?.main?.temp_min)}&#x2109;</p>
+          <p className="inline-block text-2xl">High: {Math.round(weather?.main?.temp_max)}&#x2109;</p>
+          <h3 className="text-3xl mt-4 mb-4">{upperCaseDescription.charAt(0).toUpperCase() + upperCaseDescription.slice(1)}</h3>
+          <p className="mb-8 text-2xl">Wind Speed: {Math.round(weather?.wind?.speed)} MPH</p>
         </div>
         <div>
             <AddCityForm weather={weather} cities={cities}/>
@@ -78,12 +79,13 @@ useEffect(() => {
         <p>Search for your city!</p>
         <form onSubmit={handleSearch}>
           <input
+          className="rounded-xl h-8 w-80 text-center bg-blue-800 hover:bg-violet-600"
             type="text"
             value={city}
             onChange={handleChange}
             placeholder="Enter City"
           />
-          <button className="bg-black p-1 m-2" type="submit">Search</button>
+          <button className="bg-blue-800 hover:bg-violet-600 p-1 m-2 w-36" type="submit">Search</button>
         </form>
 
         

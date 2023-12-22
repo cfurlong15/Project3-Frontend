@@ -5,6 +5,8 @@ import AddCityForm from './pages/AddCityForm/AddCityForm'
 import CityList from './pages/CityList/CityList'
 import { Routes, Route } from 'react-router-dom'
 import Background from './components/Background/Background'
+import Home from './pages/Home/Home'
+import Header from './components/Header/Header'
 
 function App() {
   
@@ -12,8 +14,11 @@ function App() {
   return (
     <div>
       <Background />
+      <Header />
       <Routes>
-        <Route path="/" element={<WeatherForm />}></Route>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/weather" element={<WeatherForm />}></Route>
+        {/* <Route path="/weather/add" element={<AddCityForm />}></Route> */}
         <Route path="/list" element={<CityList />}></Route>
       </Routes>
       
