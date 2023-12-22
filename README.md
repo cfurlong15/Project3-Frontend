@@ -14,11 +14,18 @@ Upon searching for a city (ex: Boston, Massachusetts), the user will be able to 
 
 ![](./src/assets/Search-page.png)
 
+## Technologies Used
+- React
+- OpenWeather API
+- Tailwind CSS
+- VITE
+- Node.JS
+
 ## Getting Started 
 
 Click on this link to open the app and start searching!
 
-WeatherWise: https://timely-snickerdoodle-57a02c.netlify.app/ 
+WeatherWise: https://weather-wise-weather.netlify.app/ 
 
 Trello Board: https://trello.com/b/2A1YCBkg/weather-app 
 
