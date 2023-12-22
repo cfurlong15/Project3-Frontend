@@ -13,11 +13,12 @@ function Background() {
       muted: true,
       background: true,
       width: 1920,
-      height: 1080
+      height: 1080,
     };
 
     if (videoRef.current) {
       const player = new Vimeo(videoRef.current, options);
+      player.setPlaybackRate(0.65)
     }
   }, []);
 

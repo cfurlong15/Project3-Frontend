@@ -46,7 +46,7 @@ useEffect(() => {
 
   if (searched) {
     return (
-      <div className="bg-blue-500 p-6 rounded-2xl">
+      <div className="bg-blue-500 p-6 rounded-2xl opacity-75">
         <form onSubmit={handleSearch}>
           <input
             type="text"
@@ -57,14 +57,14 @@ useEffect(() => {
           <button className="bg-black p-1 m-2" type="submit">Search</button>
         </form>
         
-        <div>
-          <h2>{weather.name}</h2>
+        <div className="grid-cols-2">
+          <h2 className="text-2xl">{weather.name}</h2>
           <h2>{Math.round(weather?.main?.temp)}&#x2109;</h2>
           <h3>{upperCaseDescription.charAt(0).toUpperCase() + upperCaseDescription.slice(1)}</h3>
-          <p>Low: {Math.round(weather?.main?.temp_min)}&#x2109;</p>
-          <p>High: {Math.round(weather?.main?.temp_max)}&#x2109;</p>
+          <p className="inline-block pr-4">Low: {Math.round(weather?.main?.temp_min)}&#x2109;</p>
+          <p className="inline-block">High: {Math.round(weather?.main?.temp_max)}&#x2109;</p>
           <p>Wind Speed: {Math.round(weather?.wind?.speed)} MPH</p>
-          <p>{weather?.weather.main}</p>
+          
         </div>
         <div>
             <AddCityForm weather={weather} cities={cities}/>
@@ -74,7 +74,7 @@ useEffect(() => {
     );
   } else {
     return (
-      <div className="bg-blue-500 p-6 rounded-2xl">
+      <div className="bg-blue-500 p-6 rounded-2xl opacity-75">
         <p>Search for your city!</p>
         <form onSubmit={handleSearch}>
           <input
