@@ -18,13 +18,13 @@ function Background() {
 
     if (videoRef.current) {
       const player = new Vimeo(videoRef.current, options);
-      player.setPlaybackRate(0.65)
+      player.setPlaybackRate(0.65);
     }
   }, []);
 
   return (
     <div className="video-background-container">
-        <div ref={videoRef} className="video-container"></div>
+      <div ref={videoRef} className="video-container"></div>
     </div>
   );
 }
